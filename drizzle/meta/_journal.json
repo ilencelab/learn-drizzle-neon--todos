@@ -15,6 +15,20 @@
       "when": 1756282498500,
       "tag": "0001_heavy_fantastic_four",
       "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "7",
+      "when": 1756298112027,
+      "tag": "0002_skinny_photon",
+      "breakpoints": true
+    },
+    {
+      "idx": 3,
+      "version": "7",
+      "when": 1756305126746,
+      "tag": "0003_cooing_elektra",
+      "breakpoints": true
     }
   ]
 }

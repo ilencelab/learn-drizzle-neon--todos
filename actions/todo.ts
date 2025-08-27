@@ -5,8 +5,14 @@ import { todo } from "@/db/schema";
 import { eq, not } from "drizzle-orm";
 import { revalidatePath } from "next/cache";
 
-export const addTodo = async (text: string) => {
-  await db.insert(todo).values({ text });
+export const addTodo = async ({
+  text,
+  userId,
+}: {
+  text: string;
+  userId: string;
+}) => {
+  await db.insert(todo).values({ text, userId });
   revalidatePath("/");
 };
 

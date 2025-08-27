@@ -2,13 +2,13 @@
 
 import { addTodo } from "@/actions/todo";
 
-export function AddTodoForm() {
+export function AddTodoForm({ userId }: { userId: string }) {
   return (
     <form
       className="flex items-center gap-2 p-4 bg-white rounded shadow"
       action={async (formData) => {
         const text = formData.get("text") as string;
-        await addTodo(text);
+        await addTodo({ text, userId });
       }}
     >
       <input

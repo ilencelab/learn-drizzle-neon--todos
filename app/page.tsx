@@ -1,15 +1,15 @@
-import { AddTodoForm } from "@/components/add-todo-form";
-import { TodoList } from "@/components/todo-list";
-import { getTodos } from "@/lib/db";
+import Link from "next/link";
 
 export default async function Page() {
-  const todos = await getTodos();
-
   return (
-    <div className="max-w-xl mx-auto">
-      <h1>Todos</h1>
-      <AddTodoForm />
-      <TodoList todos={todos} />
-    </div>
+    <>
+      <div className="flex justify-between py-8">
+        <h1>Todos</h1>
+        <div className="space-x-4">
+          <Link href="/sign-up">Sign Up</Link>
+          <Link href="/sign-in">Sign In</Link>
+        </div>
+      </div>
+    </>
   );
 }
