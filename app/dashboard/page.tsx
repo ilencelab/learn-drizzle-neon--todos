@@ -1,6 +1,11 @@
 import Link from "next/link";
+import type { Metadata } from "next";
 
 const routes = ["todos"];
+
+export const metadata: Metadata = {
+  title: "Dashboard",
+};
 
 export default function Page() {
   return (

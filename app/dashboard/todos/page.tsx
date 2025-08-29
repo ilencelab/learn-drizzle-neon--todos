@@ -3,6 +3,11 @@ import DashboardHeader from "@/components/dashboard-header";
 import { TodoList } from "@/components/todo-list";
 import { getCurrentUser } from "@/lib/auth";
 import { getTodos } from "@/lib/db";
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Todos",
+};
 
 export default async function Page() {
   const user = await getCurrentUser();
