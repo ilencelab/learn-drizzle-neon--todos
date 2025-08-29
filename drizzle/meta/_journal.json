@@ -36,6 +36,20 @@
       "when": 1756364432378,
       "tag": "0004_fast_lady_ursula",
       "breakpoints": true
+    },
+    {
+      "idx": 5,
+      "version": "7",
+      "when": 1756472557112,
+      "tag": "0005_outgoing_bug",
+      "breakpoints": true
+    },
+    {
+      "idx": 6,
+      "version": "7",
+      "when": 1756473571646,
+      "tag": "0006_supreme_archangel",
+      "breakpoints": true
     }
   ]
 }

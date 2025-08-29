@@ -1,6 +1,6 @@
 import { db } from "@/db/drizzle";
-import { todo } from "@/db/schema";
-import { eq } from "drizzle-orm";
+import { movie, todo } from "@/db/schema";
+import { desc, eq } from "drizzle-orm";
 
 export const getTodos = async (userId: string) => {
   return await db
@@ -8,4 +8,12 @@ export const getTodos = async (userId: string) => {
     .from(todo)
     .where(eq(todo.userId, userId))
     .orderBy(todo.createdAt);
+};
+
+export const getWatchedMovies = async (userId: string) => {
+  return await db
+    .select()
+    .from(movie)
+    .where(eq(movie.userId, userId))
+    .orderBy(desc(movie.createdAt));
 };

@@ -1,0 +1,1 @@
+ALTER TABLE "movie" ALTER COLUMN "watched_at" SET DATA TYPE text;
