@@ -1,20 +1,17 @@
-import { AddTodoForm } from "@/components/add-todo-form";
-import DashboardHeader from "@/components/dashboard-header";
-import { TodoList } from "@/components/todo-list";
-import { getCurrentUser } from "@/lib/auth";
-import { getTodos } from "@/lib/db";
+import Link from "next/link";
 
-export default async function Page() {
-  const user = await getCurrentUser();
-  const todos = await getTodos(user.id);
+const routes = ["todos"];
 
+export default function Page() {
   return (
-    <>
-      <DashboardHeader />
-      <div className="py-6">
-        <AddTodoForm userId={user.id} />
-      </div>
-      <TodoList todos={todos} />
-    </>
+    <div className="py-8 px-4">
+      <ul className="grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3">
+        {routes.map((r) => (
+          <li key={r}>
+            <Link href={`/dashboard/${r}`}>{r}</Link>
+          </li>
+        ))}
+      </ul>
+    </div>
   );
 }
