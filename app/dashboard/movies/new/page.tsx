@@ -12,7 +12,7 @@ export default async function Page({ searchParams }: PageProps) {
 
   return (
     <>
-      <div className="sticky top-0 bg-white p-6">
+      <div className="sticky top-0 z-50 bg-white p-6">
         <MovieSearchForm />
       </div>
       <div className="px-6">
