@@ -28,7 +28,7 @@ export function MovieSearchForm() {
   return (
     <form className="flex items-center gap-2" onSubmit={handleSubmit}>
       <input
-        type="text"
+        type="search"
         name="query"
         placeholder="搜索电影..."
         required
