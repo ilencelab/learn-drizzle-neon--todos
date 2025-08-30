@@ -33,15 +33,19 @@ export const movie = pgTable(
   {
     id: integer("id").primaryKey().generatedAlwaysAsIdentity().notNull(),
     userId: text("user_id").notNull(),
+    //
     watchedAt: text("watched_at").notNull(), // 看完日期
     rating: integer("rating").notNull(), // 评分
     thoughts: text("thoughts"), // 想法
+    // 电影元数据
+    tmdbId: integer("tmdb_id").notNull(),
     title: text("title").notNull(),
     releaseDate: text("release_date").notNull(),
     posterUrl: text("poster_url"),
     backdropUrl: text("backdrop_url"),
     originalTitle: text("original_title"),
     originalLanguage: text("original_language"),
+    //
     createdAt: timestamp("created_at").notNull().defaultNow(),
   },
   (table) => [

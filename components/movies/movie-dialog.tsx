@@ -52,8 +52,8 @@ export function MovieDialog({ movie }: { movie: TMDBMovie }) {
           {watched ? (
             <MovieMarkForm
               onSubmit={async (data) => {
-                const { id, ...raw } = movie;
-                await addMovie({ ...data, ...raw, userId });
+                const { id: tmdbId, ...rawMovieData } = movie;
+                await addMovie({ ...data, tmdbId, ...rawMovieData, userId });
                 replace("/dashboard/movies");
               }}
             />
