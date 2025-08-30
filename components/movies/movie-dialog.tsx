@@ -2,14 +2,14 @@
 
 import { useRef, useState } from "react";
 
-import { addMovie } from "@/actions/movie";
+import { addMovie, editMovie } from "@/actions/movie";
 import { MovieItem } from "@/components/movies/movie-item";
 import { MovieMarkForm } from "@/components/movies/movie-mark-form";
 import { useAuth } from "@/contexts/auth";
-import { TMDBMovie } from "@/lib/tmdb";
+import { MovieWithWatchedInfo } from "@/types/db";
 import { useRouter } from "next/navigation";
 
-export function MovieDialog({ movie }: { movie: TMDBMovie }) {
+export function MovieDialog({ movie }: { movie: MovieWithWatchedInfo }) {
   const dialogRef = useRef<HTMLDialogElement>(null);
 
   const openDialog = (e: React.MouseEvent) => {
@@ -22,7 +22,7 @@ export function MovieDialog({ movie }: { movie: TMDBMovie }) {
   };
 
   //
-  const [watched, setWatched] = useState(false);
+  const [watched, setWatched] = useState(movie.seen);
 
   const { userId } = useAuth();
 
@@ -51,9 +51,18 @@ export function MovieDialog({ movie }: { movie: TMDBMovie }) {
           <MovieItem movie={movie} />
           {watched ? (
             <MovieMarkForm
+              defaultDate={movie.watchedAt}
+              defaultStars={movie.rating}
+              defaultThought={movie.thoughts || ""}
               onSubmit={async (data) => {
                 const { id: tmdbId, ...rawMovieData } = movie;
-                await addMovie({ ...data, tmdbId, ...rawMovieData, userId });
+
+                if (movie.seen) {
+                  await editMovie(movie.watchedId!, data);
+                } else {
+                  await addMovie({ ...data, tmdbId, ...rawMovieData, userId });
+                }
+
                 replace("/dashboard/movies");
               }}
             />
