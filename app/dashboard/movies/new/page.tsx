@@ -1,5 +1,6 @@
 import { Suspense } from "react";
 
+import { CancelSearchButton } from "@/components/movies/cancel-search-button";
 import { MovieSearchForm } from "@/components/movies/movie-search-form";
 import { MovieSearchList } from "@/components/movies/movie-search-list";
 
@@ -13,7 +14,12 @@ export default async function Page({ searchParams }: PageProps) {
   return (
     <>
       <div className="sticky top-0 z-50 bg-white p-6">
-        <MovieSearchForm />
+        <div className="flex items-center gap-2">
+          <div className="grow">
+            <MovieSearchForm />
+          </div>
+          <CancelSearchButton />
+        </div>
       </div>
       <div className="px-6">
         <Suspense
