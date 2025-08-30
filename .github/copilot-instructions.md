@@ -7,8 +7,9 @@
 ## Key Patterns & Conventions
 
 - Use arrow function when defining functions
+- Use regular function when defining React components
 - Use functional React components and hooks
-- Use TypeScript for all code, with interfaces for data and props.
+- Use TypeScript for all code, with type annotation for data and props.
 - Styling is done with TailwindCSS (see `globals.css`).
 - Use Drizzle ORM for all database access; schema is defined in `db/schema.ts`.
 - Use Next.js server actions for mutations (see `actions/`).
