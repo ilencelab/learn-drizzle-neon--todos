@@ -37,7 +37,7 @@ export function MovieDialog({ movie }: { movie: TMDBMovie }) {
       ></button>
       <dialog
         ref={dialogRef}
-        className="fixed top-1/2 left-1/2 m-0 w-[90vw] max-w-md -translate-1/2 rounded-lg p-0 shadow-xl backdrop:bg-black/40"
+        className="m-auto w-[90vw] max-w-md rounded-lg p-0 shadow-xl backdrop:bg-black/40"
       >
         <div className="relative flex flex-col gap-6 p-6">
           <button
