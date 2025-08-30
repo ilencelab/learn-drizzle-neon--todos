@@ -1,13 +1,13 @@
 "use client";
 
+import { useRef, useState } from "react";
+
 import { addMovie } from "@/actions/movie";
 import { MovieItem } from "@/components/movies/movie-item";
 import { MovieMarkForm } from "@/components/movies/movie-mark-form";
 import { useAuth } from "@/contexts/auth";
 import { TMDBMovie } from "@/lib/tmdb";
 import { useRouter } from "next/navigation";
-
-import { useRef, useState } from "react";
 
 export function MovieDialog({ movie }: { movie: TMDBMovie }) {
   const dialogRef = useRef<HTMLDialogElement>(null);
@@ -37,12 +37,12 @@ export function MovieDialog({ movie }: { movie: TMDBMovie }) {
       ></button>
       <dialog
         ref={dialogRef}
-        className="rounded-lg p-0 max-w-md w-[90vw] shadow-xl backdrop:bg-black/40 m-0 fixed top-1/2 left-1/2 -translate-1/2"
+        className="fixed top-1/2 left-1/2 m-0 w-[90vw] max-w-md -translate-1/2 rounded-lg p-0 shadow-xl backdrop:bg-black/40"
       >
-        <div className="p-6 relative flex flex-col gap-6">
+        <div className="relative flex flex-col gap-6 p-6">
           <button
             onClick={closeDialog}
-            className="absolute right-3 top-3 text-gray-400 hover:text-gray-700 text-xl"
+            className="absolute top-3 right-3 text-xl text-gray-400 hover:text-gray-700"
             aria-label="关闭"
             type="button"
           >
@@ -59,7 +59,7 @@ export function MovieDialog({ movie }: { movie: TMDBMovie }) {
             />
           ) : (
             <button
-              className="w-full bg-black text-white px-4 py-2 rounded hover:bg-black/80 transition-colors"
+              className="w-full rounded bg-black px-4 py-2 text-white transition-colors hover:bg-black/80"
               onClick={() => setWatched(true)}
             >
               看过

@@ -1,6 +1,6 @@
 "use client";
 
-import { useSearchParams, usePathname, useRouter } from "next/navigation";
+import { usePathname, useRouter, useSearchParams } from "next/navigation";
 
 export function MovieSearchForm() {
   const searchParams = useSearchParams();
@@ -34,11 +34,11 @@ export function MovieSearchForm() {
         required
         autoComplete="off"
         defaultValue={searchParams.get("query")?.toString()}
-        className="border rounded px-4 py-2 flex-1 focus:outline-none focus:ring-2 focus:ring-blue-500"
+        className="flex-1 rounded border px-4 py-2 focus:ring-2 focus:ring-blue-500 focus:outline-none"
       />
       <button
         type="submit"
-        className="bg-black text-white px-4 py-2 rounded hover:bg-black/80 transition-colors"
+        className="rounded bg-black px-4 py-2 text-white transition-colors hover:bg-black/80"
       >
         搜索
       </button>

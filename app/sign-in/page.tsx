@@ -14,16 +14,16 @@ export default function Page() {
   return (
     <form
       action={formAction}
-      className="max-w-sm mx-auto mt-10 p-6 bg-white rounded shadow space-y-4"
+      className="mx-auto mt-10 max-w-sm space-y-4 rounded bg-white p-6 shadow"
     >
-      <div className="flex justify-between mb-6">
+      <div className="mb-6 flex justify-between">
         <h1 className="font-bold">
           <Link href="/">Todos</Link>
         </h1>
         <h2>Sign In</h2>
       </div>
       <div>
-        <label htmlFor="email" className="block text-sm font-medium mb-1">
+        <label htmlFor="email" className="mb-1 block text-sm font-medium">
           Email
         </label>
         <input
@@ -32,11 +32,11 @@ export default function Page() {
           id="email"
           required
           autoComplete="off"
-          className="w-full border rounded px-3 py-2 focus:outline-none focus:ring focus:border-blue-500"
+          className="w-full rounded border px-3 py-2 focus:border-blue-500 focus:ring focus:outline-none"
         />
       </div>
       <div>
-        <label htmlFor="password" className="block text-sm font-medium mb-1">
+        <label htmlFor="password" className="mb-1 block text-sm font-medium">
           Password
         </label>
         <input
@@ -44,12 +44,12 @@ export default function Page() {
           name="password"
           id="password"
           required
-          className="w-full border rounded px-3 py-2 focus:outline-none focus:ring focus:border-blue-500"
+          className="w-full rounded border px-3 py-2 focus:border-blue-500 focus:ring focus:outline-none"
         />
       </div>
       <button
         type="submit"
-        className="w-full bg-blue-600 text-white py-2 rounded hover:bg-blue-700 transition"
+        className="w-full rounded bg-blue-600 py-2 text-white transition hover:bg-blue-700"
       >
         Sign In
       </button>

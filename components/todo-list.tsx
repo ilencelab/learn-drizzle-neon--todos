@@ -13,13 +13,13 @@ export function TodoList({ todos }: TodoListProps) {
       {todos.map((todo) => (
         <li
           key={todo.id}
-          className="flex items-center gap-4 p-4 bg-white rounded shadow"
+          className="flex items-center gap-4 rounded bg-white p-4 shadow"
         >
           <button
             className={
               todo.done
-                ? "text-green-500 text-xs font-semibold"
-                : "text-yellow-500 text-xs font-semibold"
+                ? "text-xs font-semibold text-green-500"
+                : "text-xs font-semibold text-yellow-500"
             }
             onClick={() => toggleTodo(todo.id)}
           >

@@ -33,11 +33,11 @@ export function MovieMarkForm({
   return (
     <form onSubmit={handleSubmit} className="space-y-4">
       <div className="flex items-center justify-between">
-        <label className="block text-sm mb-1 font-medium">看完日期</label>
+        <label className="mb-1 block text-sm font-medium">看完日期</label>
         <span className="text-sm text-gray-500">{watchedAt}</span>
       </div>
       <div className="flex items-center justify-between">
-        <label className="block text-sm mb-1 font-medium">我的评分</label>
+        <label className="mb-1 block text-sm font-medium">我的评分</label>
         <div className="flex gap-1">
           {[1, 2, 3, 4, 5].map((n) => (
             <button
@@ -46,8 +46,8 @@ export function MovieMarkForm({
               onClick={() => setRating(n)}
               className={
                 n <= rating
-                  ? "text-yellow-400 text-2xl"
-                  : "text-gray-300 text-2xl"
+                  ? "text-2xl text-yellow-400"
+                  : "text-2xl text-gray-300"
               }
               aria-label={`打${n}星`}
             >
@@ -57,17 +57,17 @@ export function MovieMarkForm({
         </div>
       </div>
       <div>
-        <label className="block text-sm mb-2 font-medium">我的想法</label>
+        <label className="mb-2 block text-sm font-medium">我的想法</label>
         <textarea
           value={thoughts}
           onChange={(e) => setThoughts(e.target.value)}
-          className="border rounded px-3 py-2 w-full min-h-[80px] resize-none"
+          className="min-h-[80px] w-full resize-none rounded border px-3 py-2"
           placeholder="写下你的观后感..."
         />
       </div>
       <button
         type="submit"
-        className="w-full bg-black text-white px-4 py-2 rounded hover:bg-black/80 transition-colors"
+        className="w-full rounded bg-black px-4 py-2 text-white transition-colors hover:bg-black/80"
         disabled={saving}
       >
         {saving ? "保存中..." : "保存"}

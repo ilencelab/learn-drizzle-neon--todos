@@ -1,6 +1,7 @@
-import { MovieSearchList } from "@/components/movies/movie-search-list";
-import { MovieSearchForm } from "@/components/movies/movie-search-form";
 import { Suspense } from "react";
+
+import { MovieSearchForm } from "@/components/movies/movie-search-form";
+import { MovieSearchList } from "@/components/movies/movie-search-list";
 
 interface PageProps {
   searchParams: Promise<{ query?: string }>;

@@ -8,17 +8,17 @@ export function WatchedMovieItem({ movie }: { movie: WatchedMovie }) {
         <img
           src={movie.posterUrl}
           alt={movie.title}
-          className="w-16 h-24 object-cover rounded shrink-0 bg-gray-100"
+          className="h-24 w-16 shrink-0 rounded bg-gray-100 object-cover"
           loading="lazy"
         />
       ) : (
-        <div className="w-16 h-24 flex items-center justify-center bg-gray-200 text-gray-400 rounded shrink-0 text-xs">
+        <div className="flex h-24 w-16 shrink-0 items-center justify-center rounded bg-gray-200 text-xs text-gray-400">
           无封面
         </div>
       )}
       {/* 电影信息 */}
-      <div className="flex-1 min-w-0 space-y-1">
-        <div className="font-semibold text-base truncate" title={movie.title}>
+      <div className="min-w-0 flex-1 space-y-1">
+        <div className="truncate text-base font-semibold" title={movie.title}>
           {movie.title}
         </div>
         <div className="flex gap-1">

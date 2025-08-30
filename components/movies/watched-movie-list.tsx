@@ -8,7 +8,7 @@ export async function MovieList() {
 
   if (!movies || movies.length === 0) {
     return (
-      <div className="text-gray-500 text-center py-8">
+      <div className="py-8 text-center text-gray-500">
         还没有标记的电影, 快去标记吧
       </div>
     );
@@ -19,7 +19,7 @@ export async function MovieList() {
       {movies.map((movie) => (
         <li
           key={movie.id}
-          className="bg-white rounded-lg shadow p-3 sm:p-4 relative"
+          className="relative rounded-lg bg-white p-3 shadow sm:p-4"
         >
           <WatchedMovieItem movie={movie} />
         </li>
