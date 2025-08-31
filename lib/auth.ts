@@ -1,3 +1,5 @@
+import { cache } from "react";
+
 import { db } from "@/db/drizzle";
 // your drizzle instance
 import { authSchema } from "@/db/schema";
@@ -17,7 +19,7 @@ export const auth = betterAuth({
   plugins: [nextCookies()], // make sure this is the last plugin in the array
 });
 
-export const getCurrentUser = async () => {
+export const getCurrentUser = cache(async () => {
   const session = await auth.api.getSession({
     headers: await headers(),
   });
@@ -27,4 +29,4 @@ export const getCurrentUser = async () => {
   }
 
   return session.user;
-};
+});
