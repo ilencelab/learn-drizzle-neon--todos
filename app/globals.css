@@ -5,3 +5,9 @@
     @apply cursor-pointer;
   }
 }
+
+@layer components {
+  .dropdown-menu {
+    @apply w-full cursor-pointer rounded px-3 py-2 text-left transition-colors hover:bg-gray-100;
+  }
+}

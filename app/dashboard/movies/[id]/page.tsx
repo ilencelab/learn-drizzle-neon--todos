@@ -1,6 +1,8 @@
 import { BackToMoviesButton } from "@/components/movies/back-to-movies-button";
+import { DeleteSeenMovie } from "@/components/movies/delete-seen-movie";
 import { MovieItem } from "@/components/movies/movie-item";
 import { WatchedMovieMarkForm } from "@/components/movies/watched-movie-mark-form";
+import { Dropdown } from "@/components/ui/dropdown";
 import { getCurrentUser } from "@/lib/auth";
 import { getWatchedMovie } from "@/lib/db";
 import type { Metadata } from "next";
@@ -26,26 +28,31 @@ export default async function Page({ params }: PageProps) {
   const user = await getCurrentUser();
   const movie = await getWatchedMovie(parseInt(id), user.id);
 
+  if (!movie) {
+    return <p>OOPs</p>;
+  }
+
   return (
     <>
       <header className="sticky top-0 z-10 flex h-14 items-center border-b border-gray-200 bg-white/80 px-4 shadow backdrop-blur">
-        <BackToMoviesButton />
+        <div className="flex w-full items-center justify-between">
+          <BackToMoviesButton />
+          <Dropdown>
+            <DeleteSeenMovie id={movie.id} />
+          </Dropdown>
+        </div>
       </header>
       <main className="p-4">
-        {movie ? (
-          <div className="space-y-4">
-            <MovieItem movie={movie.tmdbData} />
-            <hr className="text-gray-200" />
-            <WatchedMovieMarkForm
-              id={movie.id}
-              watchedAt={movie.watchedAt}
-              rating={movie.rating}
-              thoughts={movie.thoughts || ""}
-            />
-          </div>
-        ) : (
-          <p>404</p>
-        )}
+        <div className="space-y-4">
+          <MovieItem movie={movie.tmdbData} />
+          <hr className="text-gray-200" />
+          <WatchedMovieMarkForm
+            id={movie.id}
+            watchedAt={movie.watchedAt}
+            rating={movie.rating}
+            thoughts={movie.thoughts || ""}
+          />
+        </div>
       </main>
     </>
   );
