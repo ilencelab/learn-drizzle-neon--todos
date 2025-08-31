@@ -2,7 +2,7 @@ import { WatchedMovieItem } from "@/components/movies/watched-movie-item";
 import { getCurrentUser } from "@/lib/auth";
 import { getWatchedMovies } from "@/lib/db";
 
-export async function MovieList() {
+export async function WatchedMovieList() {
   const user = await getCurrentUser();
   const movies = await getWatchedMovies(user.id);
 
