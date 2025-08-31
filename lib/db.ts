@@ -1,7 +1,9 @@
+import { cache } from "react";
+
 import { db } from "@/db/drizzle";
 import { movie, todo } from "@/db/schema";
 import { TMDBMovie } from "@/lib/tmdb";
-import { MovieWithWatchedInfo } from "@/types/db";
+import { MovieWithWatchedInfo, SeenMovie, WatchedMovie } from "@/types/db";
 import { and, desc, eq, inArray } from "drizzle-orm";
 
 export const getTodos = async (userId: string) => {
@@ -19,6 +21,41 @@ export const getWatchedMovies = async (userId: string) => {
     .where(eq(movie.userId, userId))
     .orderBy(desc(movie.createdAt));
 };
+
+export const getWatchedMovie = cache(
+  async (id: number, userId: string): Promise<SeenMovie | null> => {
+    const [result] = await db
+      .select()
+      .from(movie)
+      .where(and(eq(movie.id, id), eq(movie.userId, userId)))
+      .limit(1);
+
+    if (result as WatchedMovie | undefined) {
+      const {
+        id,
+        userId,
+        createdAt,
+        watchedAt,
+        rating,
+        thoughts,
+        tmdbId,
+        ...tmdbData
+      } = result;
+
+      return {
+        id,
+        userId,
+        createdAt,
+        watchedAt,
+        rating,
+        thoughts,
+        tmdbData: { id: tmdbId, ...tmdbData },
+      };
+    } else {
+      return null;
+    }
+  },
+);
 
 // 为搜索到的 movies 添加已观看信息
 export const appendMoviesWithWatchedInfo = async (
