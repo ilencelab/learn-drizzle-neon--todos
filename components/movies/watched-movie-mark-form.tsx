@@ -43,7 +43,7 @@ export function WatchedMovieMarkForm({
           placeholder="写下你的观后感..."
         />
       </div>
-      <div className="fixed inset-x-0 bottom-0 bg-white p-4">
+      <div className="fixed inset-x-0 bottom-0 border-t border-gray-200 bg-white p-4">
         <Submit className="w-full rounded bg-black px-4 py-2 text-white transition-colors hover:bg-black/80 disabled:bg-black/80">
           保存
         </Submit>
