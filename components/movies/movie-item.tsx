@@ -1,6 +1,6 @@
-import { TMDBMovie } from "@/lib/tmdb";
+import { TMDBSearchResult } from "@/lib/tmdb";
 
-export function MovieItem({ movie }: { movie: TMDBMovie }) {
+export function MovieItem({ movie }: { movie: TMDBSearchResult }) {
   return (
     <div className="flex items-start gap-4">
       {/* 电影海报 */}
@@ -22,8 +22,14 @@ export function MovieItem({ movie }: { movie: TMDBMovie }) {
         <div className="mt-1 text-sm text-gray-500">
           <span>上映：{movie.releaseDate}</span>
         </div>
-        <div className="mt-1 truncate text-xs text-gray-400">
-          原名：{movie.originalTitle}
+        <div className="mt-1 flex items-center gap-2 truncate text-xs text-gray-400">
+          <div className="rounded bg-gray-200 px-1 py-0.5">
+            {movie.mediaType === "movie" ? "影" : "剧"}
+          </div>
+          <span>
+            原名：
+            {movie.originalTitle}
+          </span>
         </div>
       </div>
     </div>

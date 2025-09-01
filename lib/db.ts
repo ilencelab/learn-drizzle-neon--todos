@@ -2,7 +2,7 @@ import { cache } from "react";
 
 import { db } from "@/db/drizzle";
 import { movie, todo } from "@/db/schema";
-import { TMDBMovie } from "@/lib/tmdb";
+import { TMDBSearchResult } from "@/lib/tmdb";
 import { MovieWithWatchedInfo, SeenMovie, WatchedMovie } from "@/types/db";
 import { and, desc, eq, inArray } from "drizzle-orm";
 
@@ -59,7 +59,7 @@ export const getWatchedMovie = cache(
 
 // 为搜索到的 movies 添加已观看信息
 export const appendMoviesWithWatchedInfo = async (
-  movies: TMDBMovie[],
+  movies: TMDBSearchResult[],
   userId: string,
 ): Promise<MovieWithWatchedInfo[]> => {
   // 提取所有电影的 tmdbId

@@ -2,10 +2,10 @@ import { MovieDialog } from "@/components/movies/movie-dialog";
 import { MovieItem } from "@/components/movies/movie-item";
 import { getCurrentUser } from "@/lib/auth";
 import { appendMoviesWithWatchedInfo } from "@/lib/db";
-import { searchMovie } from "@/lib/tmdb";
+import { searchMedia } from "@/lib/tmdb";
 
 export async function MovieSearchList({ query }: { query: string }) {
-  const movies = query ? await searchMovie(query) : [];
+  const movies = query ? await searchMedia(query) : [];
 
   if (!movies || movies.length === 0) {
     return <div className="py-8 text-center text-gray-500">暂无搜索结果</div>;

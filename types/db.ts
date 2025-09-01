@@ -1,5 +1,5 @@
 import { movie, todo } from "@/db/schema";
-import { TMDBMovie } from "@/lib/tmdb";
+import { TMDBSearchResult } from "@/lib/tmdb";
 import { InferSelectModel } from "drizzle-orm";
 
 export type Todo = InferSelectModel<typeof todo>;
@@ -12,10 +12,10 @@ type MovieWatchedInfo = Pick<
   "id" | "watchedAt" | "rating" | "thoughts" | "createdAt" | "userId"
 >;
 export type SeenMovie = MovieWatchedInfo & {
-  tmdbData: TMDBMovie;
+  tmdbData: TMDBSearchResult;
 };
 
-export type MovieWithWatchedInfo = TMDBMovie & {
+export type MovieWithWatchedInfo = TMDBSearchResult & {
   seen: boolean;
   watchedId?: number;
   watchedAt?: string;

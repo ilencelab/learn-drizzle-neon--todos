@@ -2,6 +2,7 @@ import {
   boolean,
   foreignKey,
   integer,
+  pgEnum,
   pgSchema,
   pgTable,
   text,
@@ -28,6 +29,8 @@ export const todo = pgTable(
 );
 
 //
+export const mediaTypeEnum = pgEnum("media_type", ["movie", "tv"]);
+
 export const movie = pgTable(
   "movie",
   {
@@ -45,6 +48,7 @@ export const movie = pgTable(
     backdropUrl: text("backdrop_url").notNull(),
     originalTitle: text("original_title").notNull(),
     originalLanguage: text("original_language").notNull(),
+    mediaType: mediaTypeEnum("media_type").notNull(),
     //
     createdAt: timestamp("created_at").notNull().defaultNow(),
   },

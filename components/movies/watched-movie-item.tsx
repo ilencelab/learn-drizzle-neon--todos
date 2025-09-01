@@ -28,7 +28,10 @@ export function WatchedMovieItem({ movie }: { movie: WatchedMovie }) {
             </span>
           ))}
         </div>
-        <div className="text-sm text-gray-500">
+        <div className="flex items-center gap-2 text-xs text-gray-500">
+          <div className="rounded bg-gray-200 px-1 py-0.5">
+            {movie.mediaType === "movie" ? "影" : "剧"}
+          </div>
           <span>{movie.watchedAt} 看完</span>
         </div>
       </div>
