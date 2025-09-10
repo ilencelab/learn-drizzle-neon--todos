@@ -19,7 +19,7 @@ export function MovieMarkForm({
 }) {
   // 默认日期为今天
   const today = new Date().toISOString().slice(0, 10);
-  const watchedAt = defaultDate || today;
+  const [watchedAt, setWatchedAt] = useState(defaultDate || today);
   const [rating, setRating] = useState(defaultStars);
   const [thoughts, setThoughts] = useState(defaultThought);
   const [saving, setSaving] = useState(false);
@@ -34,7 +34,13 @@ export function MovieMarkForm({
     <form onSubmit={handleSubmit} className="space-y-4">
       <div className="flex items-center justify-between">
         <label className="mb-1 block text-sm font-medium">看完日期</label>
-        <span className="text-sm text-gray-500">{watchedAt}</span>
+        <input
+          type="date"
+          name="watchedAt"
+          value={watchedAt}
+          onChange={(e) => setWatchedAt(e.target.value)}
+          className="text-sm text-gray-500"
+        />
       </div>
       <div className="flex items-center justify-between">
         <label className="mb-1 block text-sm font-medium">我的评分</label>
