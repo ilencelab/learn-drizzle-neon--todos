@@ -19,7 +19,7 @@ export const getWatchedMovies = async (userId: string) => {
     .select()
     .from(movie)
     .where(eq(movie.userId, userId))
-    .orderBy(desc(movie.createdAt));
+    .orderBy(desc(movie.watchedAt));
 };
 
 export const getWatchedMovie = cache(
