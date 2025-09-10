@@ -17,10 +17,11 @@ export function WatchedMovieMarkForm({
   const formAction = async (formData: FormData) => {
     "use server";
 
+    const watchedAt = formData.get("watchedAt") as string;
     const rating = parseInt(formData.get("rating") as string);
     const thoughts = formData.get("thoughts") as string;
 
-    await editMovie(id, { rating, thoughts });
+    await editMovie(id, { watchedAt, rating, thoughts });
     redirect("/dashboard/movies");
   };
 
@@ -28,7 +29,12 @@ export function WatchedMovieMarkForm({
     <form action={formAction} className="space-y-4">
       <div className="flex items-center justify-between">
         <label className="mb-1 block text-sm font-medium">看完日期</label>
-        <span className="text-sm text-gray-500">{watchedAt}</span>
+        <input
+          type="date"
+          name="watchedAt"
+          defaultValue={watchedAt}
+          className="text-sm text-gray-500"
+        />
       </div>
       <div className="flex items-center justify-between">
         <label className="mb-1 block text-sm font-medium">我的评分</label>
