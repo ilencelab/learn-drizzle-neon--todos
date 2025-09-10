@@ -17,6 +17,7 @@ export const auth = betterAuth({
     enabled: true,
   },
   plugins: [nextCookies()], // make sure this is the last plugin in the array
+  telemetry: { enabled: false },
 });
 
 export const getCurrentUser = cache(async () => {
