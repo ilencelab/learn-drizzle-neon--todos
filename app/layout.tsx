@@ -3,7 +3,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "Neon | Ilence Labs",
+  title: "Neonlabs",
 };
 
 export default function RootLayout({

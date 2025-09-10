@@ -18,7 +18,7 @@ export default function Page() {
     >
       <div className="mb-6 flex justify-between">
         <h1 className="font-bold">
-          <Link href="/">Todos</Link>
+          <Link href="/">Neonlabs</Link>
         </h1>
         <h2>Sign In</h2>
       </div>
